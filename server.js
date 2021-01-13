@@ -12,6 +12,7 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cors());
 
 if (process.env.NODE_ENV === "production") {
@@ -24,10 +25,10 @@ if (process.env.NODE_ENV === "production") {
 
 app.listen(port, (error) => {
   if (error) throw error;
-  console.log("Server running on port" + port);
+  console.log("Server running on port " + port);
 });
 
-app.post("./payment", (req, res) => {
+app.post("/payment", (req, res) => {
   const body = {
     source: req.body.token.id,
     amount: req.body.amount,
